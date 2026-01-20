@@ -47,25 +47,11 @@ def generate_launch_description():
     )
 
 
-    controller_node = Node(
-        package='salvos_control',
-        executable='main',
-        name='main',
-        output='screen',
-        # parameters=[...],
-        # remappings=[...],
-    )
-
-    controller_delayed = TimerAction(
-        period=10.0,
-        actions=[controller_node]
-    )
 
     return LaunchDescription([
         set_res_path,
         gz_cmd,
         gz_bridge,
         gz_bridge_control,
-        controller_delayed
         #pose_bridge,
     ])

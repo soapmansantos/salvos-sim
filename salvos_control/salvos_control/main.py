@@ -91,10 +91,10 @@ def main(args=None):
         use_manual_control = False
         land = False
         landing = False
-        landed = False
+        landed = True
         achieved_target = False
         hover_height = 20
-        landing_min_dist = 0.9 #can be smaller, need better AGL estimation
+        landing_min_dist = 0.75 #can be smaller, need better AGL estimation
         epsilon = 1 #tune
 
         manual_control = mc.ManualControl(height=hover_height)
@@ -135,7 +135,7 @@ def main(args=None):
             manual_control.height = hover_height
 
             if timestep == 0:
-                target = [pos[0], pos[1], hover_height]
+                target = pos
 
 
             if keys_pressed['r']:
@@ -147,15 +147,15 @@ def main(args=None):
                 if not use_manual_control:
                     target = [pos[0], pos[1], hover_height]
 
-                print("MANUAL CONTROL: ", use_manual_control)
+                print('MANUAL CONTROL: ', use_manual_control)
 
 
             if keys_pressed['n']:
                 if landing:
-                    target = [pos[0], pos[1], 0]
+                    target = [pos[0], pos[1], -0.2]
                 land = True
                 use_manual_control = False
-                print("LAND: ", land)
+                print('LAND: ', land)
                 target = pos
 
             
@@ -168,9 +168,9 @@ def main(args=None):
 
             if land:
                 if achieved_target:
-                    epsilon = 0.1
+                    epsilon = 0.5
                     landing = True
-                    target = [pos[0], pos[1], 0]
+                    target = [pos[0], pos[1], -0.2]
 
             if landing and pos[2] < landing_min_dist:
                 landed = True
@@ -180,10 +180,11 @@ def main(args=None):
 
             cmd = user_cmd + target
 
+
+            motor_cmd = control.logic(state, cmd, use_manual_control, dt=dt*1e-9)
+
             if landed:
                 motor_cmd = [0, 0, 0, 0, 0]
-            else:
-                motor_cmd = control.logic(state, cmd, use_manual_control, dt=dt*1e-9)
 
             achieved_target = control.achieved_target(target, epsilon)
 
@@ -208,7 +209,6 @@ def main(args=None):
             except AttributeError:
                 print('No output for pid')
 
-
             plot.draw(screen)
 
 
@@ -225,7 +225,7 @@ def main(args=None):
                 motor_cmd = [0, 0, 0, 0, 0]
                 rotors_publisher.set_cmd(motor_cmd)
                 nodes.reset()
-                control.__init__()
+                control = ctrl.Controller()
                 nodes.set_wind(random.randrange(-25, 25), random.randrange(-25, 25), 0)
                 time.sleep(2.5)
 

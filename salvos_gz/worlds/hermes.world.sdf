@@ -104,21 +104,18 @@
     </spherical_coordinates>
 
     <!-- terrain -->
-    <include>
-      <uri>file:///home/santos/dev_ws/src/salvos_gz/models/Moon 60S 30S/model.sdf</uri>
-    </include>
 
-    <!--
+    
     <include>
       <uri>https://fuel.gazebosim.org/1.0/openrobotics/models/Ground Plane</uri>
     </include>
-    -->
+    
 
     <!-- Hermes -->
     <include>
       <uri>file:///home/santos/dev_ws/src/salvos_gz/models/hermes/model.sdf</uri>
       <name>hermes</name>
-      <pose>0 0 -0.5 0 0 0</pose>
+      <pose>0 0 0.3 0 0 0</pose>
     </include>
 
   </world>
