@@ -45,4 +45,4 @@ cd salvos_sim
 colcon build
 source install/setup.bash
 ros2 launch salvos_gz salvos_sim.launch.py
-bash
+```
