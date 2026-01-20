@@ -3,9 +3,7 @@
 Tested on:
 
 - ROS 2 Jazzy
-
 - Gazebo Harmonic
-
 - Ubuntu 24.04
 
 ### System dependencies
@@ -46,3 +44,24 @@ colcon build
 source install/setup.bash
 ros2 launch salvos_gz salvos_sim.launch.py
 ```
+
+## Controls (keyboard)
+
+A small pygame window opens and listens for keyboard input.
+
+### Mode & system
+- **m** — Toggle manual control  
+  - When switching back to auto, the target is reset to the current position and hovers there
+- **r** — Reset simulation  
+  - Stops motors, resets the world, reinitialises the controller, randomises wind
+
+### Landing / takeoff
+- **n** — Start landing sequence  
+  - Manual control disabled  
+  - Holds current position, then descends
+- **t** — Take off again (only after landing)  
+
+### Manual control inputs
+- **w, a, s, d** — Manual control inputs  
+  - Only active when manual mode is enabled (`m`)  
+  - Height and heading set by controller
