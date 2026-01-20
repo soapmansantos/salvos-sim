@@ -9,7 +9,7 @@
 
 ## `salvos_control`
 
-- A model-based, cascaded nonlinear thrust-vectoring controller (differential thrust only).
+- A model-based cascaded nonlinear thrust-vectoring controller (differential thrust only).
 
 
 
