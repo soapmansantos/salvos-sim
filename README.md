@@ -3,13 +3,13 @@
 
 ## `salvos_gz`
 
-- ROS 2 and Gazebo simulation of a **263 kg heavy-lift tailsitter eVTOL pentarotor**, developed to design and test its custom flight control system.<br><br>
+- ROS 2 and Gazebo simulation of a **263 kg heavy-lift tailsitter eVTOL pentarotor**, developed to design and test its custom flight control system<br><br>
 
 
 
 ## `salvos_control`
 
-- A model-based cascaded nonlinear thrust-vectoring controller (differential thrust only).<br><br>
+- A model-based cascaded nonlinear thrust-vectoring controller (differential thrust only)<br><br>
 
 
 ## Features
