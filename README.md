@@ -1,5 +1,9 @@
 # Salvos Technologies Simulation and Control Stack
 
+[![Watch the video](https://img.youtube.com/vi/uew2cgaLHYY/maxresdefault.jpg)](https://youtu.be/uew2cgaLHYY)
+
+### [Watch on YouTube](https://youtu.be/uew2cgaLHYY)
+
 
 ## `salvos_gz`
 
